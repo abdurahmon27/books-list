@@ -2,7 +2,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { API_KEY, API_SIGN } from "../constants";
 
 const SignInForm = () => {
   const [username, setUsername] = useState("");
@@ -17,7 +16,7 @@ const SignInForm = () => {
           <h2 className="text-3xl font-bold text-center text-gray-900">
             Sign in
           </h2>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <form className="mt-8 space-y-6">
             <div className="space-y-1">
               <label
                 htmlFor="username"
