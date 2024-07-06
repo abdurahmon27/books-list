@@ -45,7 +45,7 @@ export const Books = () => {
       <div className="w-full flex items-center justify-between max-md:flex-col">
         <div className="text-white text-3xl flex items-start justify-start flex-col tracking-wide">
           <span>
-            You've got <span className="text-[#6200EE]">7 book</span>
+            You{"'"}ve got <span className="text-[#6200EE]">7 book</span>
           </span>
           <span className="text-xl mt-4">Your books today</span>
         </div>
