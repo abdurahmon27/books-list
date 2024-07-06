@@ -10,36 +10,6 @@ const SignInForm = () => {
   const [error, setError] = useState(null);
   const [userInfo, setUserInfo] = useState(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    var myHeaders = new Headers();
-    myHeaders.append("Key", API_KEY);
-    myHeaders.append("Sign", API_SIGN);
-
-    var requestOptions = {
-      method: "GET",
-      headers: myHeaders,
-      redirect: "follow",
-    };
-
-    try {
-      const response = await fetch("https://no23.lavina.tech/myself", requestOptions);
-      const result = await response.json();
-
-      console.log("API Response:", result);
-
-      if (response.ok) {
-        setUserInfo(result);
-        setError(null);
-      } else {
-        setError(result.message || "An error occurred");
-      }
-    } catch (error) {
-      setError("An error occurred");
-    }
-  };
-
   return (
     <div className="flex items-center justify-center min-h-screen relative">
       <div className="z-10 w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md relative">

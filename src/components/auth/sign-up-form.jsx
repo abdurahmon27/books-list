@@ -2,63 +2,11 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
-import CryptoJS from "crypto-js";
-import { v4 as uuidv4 } from "uuid";
+
 
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
-  const router = useRouter();
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    if (password !== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    const uniqueKey = uuidv4();
-
-    const myHeaders = new Headers();
-    myHeaders.append("Key", uniqueKey);
-    myHeaders.append("Content-Type", "application/json");
-
-    const raw = JSON.stringify({
-      username: username,
-      secret: password,
-    });
-
-    const signStr = `POST/signup${raw}${password}`; 
-    const sign = CryptoJS.MD5(signStr).toString();
-
-    myHeaders.append("Sign", sign);
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    try {
-      const response = await fetch("https://no23.lavina.tech/signup", requestOptions);
-      const result = await response.json();
-      if (response.ok) {
-        setSuccess("User registered successfully!");
-        setError(null);
-        router.push("/");
-        console.log(result);
-      } else {
-        setError(result.message || "An error occurred");
-      }
-    } catch (error) {
-      setError("An error occurred");
-    }
-  };
 
   return (
     <div className="flex items-center justify-center min-h-screen relative">
