@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
     <div className="flex items-center justify-center min-h-screen relative">
@@ -70,8 +71,6 @@ const SignUpForm = () => {
                 placeholder="Repeat the password"
               />
             </div>
-            {error && <p className="text-sm text-red-500">{error}</p>}
-            {success && <p className="text-sm text-green-500">{success}</p>}
             <Button type="submit" className="w-full">
               Sign Up
             </Button>
